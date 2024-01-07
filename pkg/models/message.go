@@ -1,11 +1,15 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Message struct {
-    ID        string    `json:"id"`
-    SenderID  string    `json:"senderId"`
-    Content   string    `json:"content"`
-    SentAt    time.Time `json:"sentAt"`
-    RoomID    string    `json:"roomId"`
+	ID       primitive.ObjectID `json:"id"`
+	SenderID string             `json:"senderId"`
+	Content  string             `json:"content"`
+	SentAt   time.Time          `json:"sentAt"`
+	RoomID   string             `json:"roomId"`
 }

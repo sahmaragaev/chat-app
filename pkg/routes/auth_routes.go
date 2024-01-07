@@ -15,7 +15,7 @@ import (
 
 func RegisterAuthRoutes(router *mux.Router) {
 	authRouter := router.PathPrefix("/auth").Subrouter()
-	authRouter.Use(middleware.JWTAuthentication)
+	authRouter.Use(middlewares.JWTAuthentication)
 	authRouter.HandleFunc("/register", handlers.RegisterUser).Methods("POST")
 	authRouter.HandleFunc("/login", handlers.LoginUser).Methods("POST")
 	authRouter.HandleFunc("/protected", ProtectedEndpoint).Methods("GET")

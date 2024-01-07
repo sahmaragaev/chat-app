@@ -2,9 +2,11 @@ package main
 
 import (
 	"chat-app/pkg/db"
+	"chat-app/pkg/routes"
 	"chat-app/pkg/utils"
 	"os"
 
+	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
 
@@ -21,4 +23,10 @@ func main() {
 		utils.Log.Fatalf("Error connecting to MongoDB: %v", err)
 	}
 	db.InitCollections(db.Client, dbName)
+
+	router := mux.NewRouter()
+
+	routes.RegisterAuthRoutes(router)
+	routes.RegisterUserRoutes(router)
+	routes.RegisterMessageRoutes(router)
 }
